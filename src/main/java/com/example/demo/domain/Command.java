@@ -15,8 +15,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "customer_order")
-public class Order implements Serializable {
+public class Command implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -27,17 +26,19 @@ public class Order implements Serializable {
 
     private Double totalPrice;
 
-    @OneToMany(mappedBy = "order") @NotNull @NotEmpty @Valid
+    @OneToMany(mappedBy = "command")
     private Set<OrderItem> orderItems = new HashSet<>();
+    @ManyToOne
+    private Client client;
 
-    public Order(UUID uuid, LocalDateTime createdAt, Double totalPrice, @NotNull @NotEmpty Set<OrderItem> orderItems) {
+    public Command(UUID uuid, LocalDateTime createdAt, Double totalPrice, @NotNull @NotEmpty Set<OrderItem> orderItems) {
         this.uuid = uuid;
         this.createdAt = createdAt;
         this.totalPrice = totalPrice;
         this.orderItems = orderItems;
     }
 
-    public Order() {
+    public Command() {
     }
 
     public UUID getUuid() {
@@ -56,11 +57,11 @@ public class Order implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Double gettotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void settotalPrice(Double totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -79,5 +80,13 @@ public class Order implements Serializable {
     @JsonSetter
     public void setOrderItems (Set<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
