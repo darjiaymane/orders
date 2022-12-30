@@ -97,7 +97,7 @@ public class ClientService implements UserDetailsService {
             log.error("User found : >>> {}", username);
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(client.getRole().getName()));
-        return new org.springframework.security.core.userdetails.User(client.getEmail(), client.getPassword(), authorities);
-    }
+            return new org.springframework.security.core.userdetails.User(client.getEmail(), client.getPassword(), authorities);
+        }
     }
 }

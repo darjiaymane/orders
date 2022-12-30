@@ -27,13 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure ( AuthenticationManagerBuilder auth ) throws Exception {
-        System.out.println ("this is configure method inside SecurityConfig with param auth" );
         auth.userDetailsService (  userDetailsService).passwordEncoder ( bCryptPasswordEncoder );
     }
 
     @Override
     protected void configure ( HttpSecurity http ) throws Exception {
-        System.out.println ("this is configure in Security configure with http param" );
         CustomAuthenticationFilter customAuthenticationFilter =
                 new CustomAuthenticationFilter(authenticationManagerBean ());
 
