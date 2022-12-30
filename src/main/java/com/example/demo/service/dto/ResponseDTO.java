@@ -1,7 +1,9 @@
 package com.example.demo.service.dto;
 
-import java.io.Serializable;
+import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+@Component
 public class ResponseDTO implements Serializable {
 
     private String status;
@@ -20,6 +22,7 @@ public class ResponseDTO implements Serializable {
         this.status = status;
         this.message = message;
     }
+    public ResponseDTO(){}
 
     public String getStatus() {
         return status;
