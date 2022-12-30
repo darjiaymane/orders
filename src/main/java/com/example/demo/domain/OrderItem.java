@@ -20,16 +20,16 @@ public class OrderItem implements Serializable {
     private Double price;
 
     @ManyToOne
-    private Order order;
+    private Command command;
 
     public OrderItem() {
     }
 
-    public OrderItem(String refProduct, Integer quantity, Double price, Order order) {
+    public OrderItem(String refProduct, Integer quantity, Double price, Command command) {
         this.refProduct = refProduct;
         this.quantity = quantity;
         this.price = price;
-        this.order = order;
+        this.command = command;
     }
 
     public String getRefProduct() {
@@ -64,11 +64,11 @@ public class OrderItem implements Serializable {
         return id;
     }
 
-    public Order getOrder() {
-        return order;
+    public Command getOrder() {
+        return command;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(Command command) {
+        this.command = command;
     }
 }
